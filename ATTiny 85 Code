@@ -1,0 +1,60 @@
+/*
+ MULTI FUNCTION SMART PLUG By Santhosh Jayarajan
+ 1. Uses Digispark at 16.5 Mhz Internal
+ 2.Uses a HC 06 TO commuinicate by Bluetooth to the Tiny 85
+ 3.LEDs connected to Port - 2,0
+ 4. RELAY Connected to Pin 3
+ 5. HC -06 TO Port - 1 and 4
+*/
+
+#include <SoftSerial.h>
+#include <TinyPinChange.h>  
+#include <EEPROM.h>
+
+#define SUPLED_RED 0
+#define SUP_LED_GREEN 2
+#define RELAY_ON 3
+
+const byte BTRX = 4;
+const byte BTTX = 1;
+
+
+//VARIABLES
+int Control_Mode;
+int Control;
+int On_Off_Time;
+
+SoftSerial BTRead(BTRX,BTTX);
+
+void setup()
+{
+pinMode(SUPLED_GREEN,OUTPUT);
+pinMode(SUPLED_RED,OUTPUT);
+pinMode(RELAY_ON,OUTPUT);
+pinMode(BTRX,INPUT);
+pinMode(BTTX,OUTPUT);
+BTRead.begin(9600);
+}
+
+
+
+//BT READ SUBROUTINE
+void BTDataRead()
+{
+
+if(BTRead.available()>1)
+{
+Control_Mode = BTRead.parseInt();
+Control = BTRead.parseInt();
+On_Off_Time = BTRead.parseInt();
+}
+
+
+}
+
+// MAIN LOOP
+void loop() 
+{
+BTDataRead();  
+}
+
