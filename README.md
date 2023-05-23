@@ -13,6 +13,7 @@ Created a new version Ver-11 without Battery Optimisation features for use on so
 Version History:
 1) Version -10 for Original Version.(May 2023)
 2) Version -11 for Version without Battery Optimisation.(May 2023)
+3) Version -10_Wake_Lock_Rel  Wake Lock released after battery charge in normal and Emergency Modes
 
 
 ========================================= Tried and Tested in May 2023... OKAY ============================================================================
